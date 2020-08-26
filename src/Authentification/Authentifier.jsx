@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
         minHeight:'94vh',
         marginBottom: theme.spacing(2),
         backgroundImage: 'url(https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2018&q=80m)',
+        backgroundBlendMode: 'multiply',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -85,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
         right: 0,
         top: 0,
         bottom: 0,
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: theme.palette.common.white,
         opacity: 0.45,
         transition: theme.transitions.create('opacity'),
       },
@@ -115,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
       titleTypography : {
         textAlign : 'center',
         paddingTop : 80,
-        color: 'black',
+        color: 'white',
         fontFamily: "Comic Sans MS, Comic Sans, cursive"
         
       }
