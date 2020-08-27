@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-export default class AddAdministrator extends Component{
+export default class AddParent extends Component{
 
     render(){
         return (
             <>
-              <h2>Création d'un administrateur</h2>
+              <h2>Création d'un nouveau Parrain</h2>
             </>
         )
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {ButtonBase,Typography } from '@material-ui/core';
+import {useHistory } from 'react-router-dom';
 
 
 const images = [
@@ -8,21 +9,29 @@ const images = [
       url: '',
       title: 'Administrateur',
       width: '25%',
+      path:'/InscriptionAdmin'
+    
     },
     {
       url: '',
       title: 'Professeur',
       width: '25%',
+      path:'/InscriptionProfesseur'
+     
     },
     {
       url: '',
       title: 'Elève',
       width: '25%',
+      path:'/InscriptionStudent'
+    
     },
     {
       url: '',
       title: 'Parents',
       width: '25%',
+      path:'/InscriptionParent'
+   
     },
   ];
 
@@ -126,21 +135,29 @@ const useStyles = makeStyles((theme) => ({
  const Authentifier = () => {
 
   const  classes = useStyles();
+  const history = useHistory();
 
+  const handleClick = (e,url) => {
+    e.preventDefault();
+    history.push(url);
+}
         return (
             <>
             <div className={classes.mainFeaturedPost}>
                 <Typography variant="h4" className={classes.titleTypography}>
                     Selectionner votre fonctionalité
                 </Typography>
-                
+
                 <div className={classes.root}>
+         
                     {images.map((image) => (
+                     
                         <ButtonBase
                             focusRipple
                             key={image.title}
                             className={classes.image}
                             focusVisibleClassName={classes.focusVisible}
+                            onClick={(e)=> handleClick(e,image.path)}
                             style={{
                             width: image.width,
                             }}
@@ -159,12 +176,15 @@ const useStyles = makeStyles((theme) => ({
                                     {image.title}
                                     <span className={classes.imageMarked} />
                                 </Typography>
-                            </span>
-
+                            </span>         
                         </ButtonBase>
+                        
                     ))}
+                  
+  
                 </div>
-            </div>
+             </div>
+           
             </>
         )
 }
