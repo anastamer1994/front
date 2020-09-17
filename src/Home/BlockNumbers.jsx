@@ -24,13 +24,13 @@ const BlockNumbers = () => {
             </Typography>
             </Container>
             <Grid container spacing={2} justify = "center" className={classes.gridContainer}>               
-                <Grid item xs={12} sm={6} md={3} spacing={2} align="center" >
+                <Grid item xs={12} sm={6} md={3}  align="center" >
                     <NumberValue />
                 </Grid>
-                <Grid item xs={12} sm={6} md={3} spacing={2} align="center"  >
+                <Grid item xs={12} sm={6} md={3}  align="center"  >
                     <NumberValue />
                 </Grid>
-                 <Grid item xs={12} sm={6} md={3} spacing={2} align="center"  >
+                 <Grid item xs={12} sm={6} md={3}  align="center"  >
                     <NumberValue />
                 </Grid>
             </Grid>

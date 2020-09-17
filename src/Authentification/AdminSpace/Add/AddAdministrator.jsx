@@ -1,89 +1,58 @@
-import React, { Component } from 'react';
-import PersonalDetails from './PersonnalDetails';
-import GlobalDetails from './GlobalDetails';
-import CompteAuthentification from './CompteAuthentification';
-import ValidationAuth from './ValidationAuth';
+import React from 'react';
+import { MDBContainer, MDBRow} from "mdbreact";
+import { Stepper, Step, StepLabel } from "@material-ui/core";
+import SwitchCases from './SwitchCases';
+import {useHistory } from 'react-router-dom';
+
+const  AddAdministrator = () => {
+     
+      const [activeStep, setActiveStep] = React.useState(1);
+      const history = useHistory();
+
+      const getSteps = () => {
+        return ['Personal Informations', 'Global Informations', 'Compte Authentification','Validation'];
+      }
+      
+      const handleSubmission = (e,url) => {
+        e.preventDefault();
+        history.push(url);
+      }
+      
+      const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      };
+          
+      const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+      };
+    
+      const steps = getSteps();
  
-export default class AddAdministrator extends Component{
-
-    state = {
-        step : 1,
-        firstName : '',
-        lastName : '',
-        bithDate : '',
-        bithPlace : '',
-        gender : '',
-        codePostal : '',
-        city : '',
-        adresse : '',
-        cellPhone : '',
-        phone : '',
-        contry : '',
-        cin : '',
-        nationality : '',
-        province : '',
-        region : '',
-        academy : '',
-        matricule : '',
-        fonctionality : '',
-        etablName : '',
-        schoolLevel : '',
-        email : '',
-        password : '',
-        confirmPassword : '',
-        photo : '',
-        firstNameError : '',
-        lastNameError : ''
-        
-    }
-  
-    nextStep = () => {
-        const {step} =this.state;
-        this.setState({
-            step : step + 1
-        })
-    };
-
-    prevStep  = () => {
-        const {step} =this.state;
-        this.setState({
-            step : step - 1
-        })
-    };
-
-    handleChange = input => e => {
-        this.setState({ [input] : e.target.value}); 
-    }
-
-    render(){
+      return(
+        <MDBContainer>
+            <h2 className="text-center font-weight-bold pt-4 pb-5 mb-2"><strong>Registration form</strong></h2>
+            
+            <Stepper activeStep={activeStep} alternativeLabel>
+                {steps.map((label) => (
+                    <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                    </Step>
+                ))}
+            </Stepper>
+            <form >
+                <MDBRow>
+                    <SwitchCases 
+                        ActifStep = {activeStep} 
+                        handleNext={handleNext} 
+                        handleBack={handleBack} 
+                        handleSubmission={(e) => handleSubmission(e,'/')} />
+                </MDBRow>
+            </form>         
+        </MDBContainer> 
+       
+      )
+     }
     
-        const {step} = this.state;
-        const { firstName ,lastName ,bithDate ,bithPlace ,gender ,codePostal ,city ,adresse ,cellPhone ,phone ,contry ,cin ,nationality ,
-        province ,region ,academy , matricule ,fonctionality ,etablName,schoolLevel ,email ,password ,confirmPassword, photo,firstNameError,lastNameError} = this.state;
-        const values = { firstName ,lastName ,bithDate ,bithPlace ,gender ,codePostal ,city ,adresse ,cellPhone ,phone ,contry ,cin ,nationality ,
-            province ,region ,academy , matricule ,fonctionality ,etablName,schoolLevel ,email ,password ,confirmPassword, photo,firstNameError,lastNameError};
-        
-        switch(step) {
-            case 1 : return (
-                <PersonalDetails 
-                    nextStep = {this.nextStep} 
-                    handleChange = {this.handleChange}
-                    values = {values}
-                />
-            )
-            case 2 : return (
-                <GlobalDetails />
-            )
-            case 3 : return (
-                <CompteAuthentification />
-            )
-            case 4 : return (
-                <ValidationAuth />
-            )
-            default : return (
-                <h2> Succes Message </h2>
-            )
-        }
-    }
-    
-}   
+   
+
+export default AddAdministrator;

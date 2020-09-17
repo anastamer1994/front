@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { MDBCol, MDBBtn } from "mdbreact";
 
-export class ValidationAuth extends Component {
+const ValidationAuth = (props) => {
     
-    continue = (e) => {
-        e.preventDefault();
-        this.props.nextStep();
-    }
-    
-    render() {
-      //  const {values} = this.props;
-
         return (
-            <div>
-                <h1>Validation Account </h1>
-            </div>
+          <MDBCol md="12">
+            <h3 className="font-weight-bold pl-0 my-4"><strong>Validation Authentification</strong></h3>
+            <h2 className="text-center font-weight-bold my-4">Registration completed!</h2>
+            <MDBBtn color="mdb-color" rounded className="float-left" onClick={props.handleBack}>previous</MDBBtn>
+            <MDBBtn color="success" rounded className="float-right" onClick={props.handleSubmission}>submit</MDBBtn>
+          </MDBCol>
         )
-    }
+    
 }
 
 export default ValidationAuth;

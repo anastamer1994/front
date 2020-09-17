@@ -27,13 +27,13 @@ const Teams = () => {
             </Typography>
         </Container>
         <Grid container  justify='center' spacing={2} className={classes.gridContainer}>
-                <Grid item xs={12} sm={6} md={3} spacing={2} align="center" >
+                <Grid item xs={12} sm={6} md={3}  align="center" >
                         <CardTeam />
                 </Grid>
-                <Grid item xs={12} sm={6} md={3} spacing={2} align="center" >
+                <Grid item xs={12} sm={6} md={3}  align="center" >
                         <CardTeam />
                 </Grid>
-                <Grid item xs={12} sm={6} md={3} spacing={2} align="center" >
+                <Grid item xs={12} sm={6} md={3}  align="center" >
                         <CardTeam />
                 </Grid>
         </Grid>

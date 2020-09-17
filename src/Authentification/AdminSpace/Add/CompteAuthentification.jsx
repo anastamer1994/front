@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { MDBCol, MDBBtn, MDBInput } from "mdbreact";
 
-export class CompteAuthentification extends Component {
-    render() {
+const  CompteAuthentification = (props) => {
+   
         return (
-            <div>
-                <h1>Compte Authentification</h1>
-            </div>
+          <MDBCol md="12">
+                <h3 className="font-weight-bold pl-0 my-4"><strong>Compte Authentification</strong></h3>
+                <MDBInput label="I agreee to the terms and conditions" type="checkbox" id="checkbox" />
+                <MDBInput label="I want to receive newsletter" type="checkbox" id="checkbox2" />
+                <MDBBtn color="mdb-color" rounded className="float-left" onClick={props.handleBack}>previous</MDBBtn>
+                <MDBBtn color="mdb-color" rounded className="float-right" onClick={props.handleNext}>next</MDBBtn>
+          </MDBCol>
         )
-    }
+    
 }
 
 export default CompteAuthentification;

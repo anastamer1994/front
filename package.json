@@ -12,6 +12,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^4.5.0",
     "material-ui-image": "^3.2.3",
+    "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.1",
     "react-countup": "^4.3.3",
