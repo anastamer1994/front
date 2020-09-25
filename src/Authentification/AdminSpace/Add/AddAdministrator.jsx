@@ -6,7 +6,7 @@ import {useHistory } from 'react-router-dom';
 
 const  AddAdministrator = () => {
      
-      const [activeStep, setActiveStep] = React.useState(1);
+      const [activeStep, setActiveStep] = React.useState(0);
       const history = useHistory();
 
       const getSteps = () => {

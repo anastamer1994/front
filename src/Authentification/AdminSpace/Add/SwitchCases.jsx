@@ -8,20 +8,20 @@ import ValidationAuth from './ValidationAuth';
 const SwitchCases = (props) => {
     console.log(props.ActifStep);
     switch(props.ActifStep) {
-        case 1 : return (
+        case 0 : return (
             <PersonalDetails handleNext={props.handleNext} />
         )
-        case 2 : return (
+        case 1 : return (
             <GlobalDetails handleNext={props.handleNext} handleBack={props.handleBack} />
         )
-        case 3 : return (
+        case 2 : return (
             <CompteAuthentification handleNext={props.handleNext} handleBack={props.handleBack} />
         )
-        case 4 : return (
+        case 3 : return (
             <ValidationAuth handleSubmission={props.handleSubmission} handleBack={props.handleBack} />
         )
         default : return (
-            <h2> Succes Message </h2>
+            <h2> Page not Found 404 </h2>
         )
     }
 
