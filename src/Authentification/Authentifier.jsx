@@ -7,28 +7,28 @@ import {useHistory } from 'react-router-dom';
 const images = [
     {
       url: '',
-      title: 'Administrateur',
+      title: 'Espace Administrateur',
       width: '25%',
       path:'/InscriptionAdmin'
     
     },
     {
       url: '',
-      title: 'Professeur',
+      title: 'Espace Professeur',
       width: '25%',
       path:'/InscriptionProfesseur'
      
     },
     {
       url: '',
-      title: 'Elève',
+      title: 'Espace Elève',
       width: '25%',
       path:'/InscriptionStudent'
     
     },
     {
       url: '',
-      title: 'Parents',
+      title: 'Espace Parents',
       width: '25%',
       path:'/InscriptionParent'
    

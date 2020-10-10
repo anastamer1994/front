@@ -1,86 +1,92 @@
 import React from "react";
-import { MDBCol, MDBBtn, MDBInput } from "mdbreact";
-import TextField from '@material-ui/core/TextField';
+import { MDBBtn } from "mdbreact";
+import { TextField,MenuItem,Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-
+import { MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles((theme) => ({
-  textField: {
-    minWidth: 540,
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '60ch',
+    },
   },
   formControl: {
-    minWidth: 540,
+    margin: theme.spacing(1),
+    width: '60ch',
   },
 }));
 
 const PersonnalDetails = (props) => {
+  
   const classes = useStyles();
+  const [selectedDate,setSelectedDate] = React.useState(new Date());
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+  const [lieu, setLieu] = React.useState('');
 
+  const handleChange = (event) => {
+    setLieu(event.target.value);
+  };
+  
   return (
-        <MDBCol md="12">
+       <>
             <h3 className="font-weight-bold pl-0 my-4">
               <strong>Personal Informations</strong></h3>
             
-            <div className="form-row">
-              <div className="col">
-                <MDBInput label="Nom" className="mt-4" />
-              </div>
-              <div className="col">
-                <MDBInput label="Prénom" className="mt-4" />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="col mt-4">
-                <TextField
-                  id="date"
-                  label="Birthday"
-                  type="date"
-                  defaultValue="AAAA-MM-JJ"
-                  className={classes.textField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+              <form className={classes.root} noValidate autoComplete="off">
+              
+              <TextField id="standard-search" label="Nom" type="text" />
+              <TextField id="standard-search" label="Prénom" type="text" />
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                    margin="normal"
+                    id="date-picker-dialog"
+                    label="Date de naissance"
+                    format="MM/dd/yyyy"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                    }}
                 />
-              </div>
-              <div className="col mt-4">
-              <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="age-native-helper">Lieu de naissance</InputLabel>
-                <NativeSelect
-                  value=""
-                  onChange=""
-                  inputProps={{
-                    name: 'age',
-                    id: 'age-native-helper',
-                  }}
+              </MuiPickersUtilsProvider>
+              <TextField id="standard-search" label="Search field" type="search" />
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  value={lieu}
+                  onChange={handleChange}
+                  className={classes.formControl}
                 >
-                  <option aria-label="None" value="" />
-                  <option value={10}>Ten</option>
-                  <option value={20}>Twenty</option>
-                  <option value={30}>Thirty</option>
-                </NativeSelect>
-              </FormControl>
-              </div>
-            </div>
-            <MDBInput label="Sexe (M/F)" className="mt-4" />
-            <MDBInput label="Pays" className="mt-4" />
-            <MDBInput label="Ville" className="mt-4" />
-            <MDBInput label="Code postal" className="mt-4" />
-            <MDBInput label="Adresse" className="mt-4" />
-            <MDBInput label="CIN" className="mt-4" />
-            <MDBInput label="Nationalité" className="mt-4" />
-            <div class="form-row">
-              <div class="col">
-                  <MDBInput label="Numéro TEL" className="mt-4" />
-              </div>
-              <div class="col">
-                  <MDBInput label="Numéro FIX" className="mt-4" />
-              </div>
-            </div>
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Casablanca</MenuItem>
+                  <MenuItem value={20}>Rabat</MenuItem>
+                  <MenuItem value={30}>El Jadida</MenuItem>
+                </Select>
+
+              
+              <TextField id="standard-search" label="Search field" type="search" />
+              <TextField id="standard-search" label="Search field" type="search" />
+              <TextField id="standard-search" label="Search field" type="search" />
+              <TextField id="standard-search" label="Search field" type="search" />
+              <TextField id="standard-search" label="Search field" type="search" />
+              <TextField id="standard-search" label="Search field" type="search" />
+              <TextField
+                id="standard-password-input"
+                label="Password"
+                type="password"
+                autoComplete="current-password"
+              />
+
+              </form>
+          
             <MDBBtn color="mdb-color" rounded className="float-right" onClick={props.handleNext}>next</MDBBtn>
-        </MDBCol>
+      </>
     );
 }
 
