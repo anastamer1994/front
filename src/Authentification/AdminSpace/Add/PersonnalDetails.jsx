@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBBtn } from "mdbreact";
-import { TextField,MenuItem,Select } from '@material-ui/core';
+import { TextField,MenuItem,Select, FormLabel,RadioGroup,Radio,FormControlLabel,InputLabel,FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const PersonnalDetails = (props) => {
   
   const classes = useStyles();
-  const [selectedDate,setSelectedDate] = React.useState(new Date());
+  const [selectedDate,setSelectedDate] = React.useState();
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -30,6 +30,11 @@ const PersonnalDetails = (props) => {
   const handleChange = (event) => {
     setLieu(event.target.value);
   };
+  const [value, setValue] = React.useState('female');
+
+  const handleChangeRadio = (event) => {
+    setValue(event.target.value);
+  };
   
   return (
        <>
@@ -37,9 +42,17 @@ const PersonnalDetails = (props) => {
               <strong>Personal Informations</strong></h3>
             
               <form className={classes.root} noValidate autoComplete="off">
-              
+             
+              <FormLabel component="legend">Gender</FormLabel>
+              <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChangeRadio} row>
+                <FormControlLabel value="female" control={<Radio  />} label="Female" />
+                <FormControlLabel value="male" control={<Radio  />} label="Male" />
+              </RadioGroup>
+
               <TextField id="standard-search" label="Nom" type="text" />
+             
               <TextField id="standard-search" label="Prénom" type="text" />
+             
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
                     margin="normal"
@@ -53,7 +66,9 @@ const PersonnalDetails = (props) => {
                     }}
                 />
               </MuiPickersUtilsProvider>
-              <TextField id="standard-search" label="Search field" type="search" />
+             
+              <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-helper-label">Lieu de Naissance</InputLabel>   
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
@@ -67,21 +82,56 @@ const PersonnalDetails = (props) => {
                   <MenuItem value={10}>Casablanca</MenuItem>
                   <MenuItem value={20}>Rabat</MenuItem>
                   <MenuItem value={30}>El Jadida</MenuItem>
-                </Select>
-
+                </Select>                
+              </FormControl>
               
-              <TextField id="standard-search" label="Search field" type="search" />
-              <TextField id="standard-search" label="Search field" type="search" />
-              <TextField id="standard-search" label="Search field" type="search" />
-              <TextField id="standard-search" label="Search field" type="search" />
-              <TextField id="standard-search" label="Search field" type="search" />
-              <TextField id="standard-search" label="Search field" type="search" />
-              <TextField
-                id="standard-password-input"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
-              />
+              <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-helper-label">Ville</InputLabel>   
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  value={lieu}
+                  onChange={handleChange}
+                  className={classes.formControl}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Casablanca</MenuItem>
+                  <MenuItem value={20}>Rabat</MenuItem>
+                  <MenuItem value={30}>El Jadida</MenuItem>
+                </Select>                
+              </FormControl>
+      
+              <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-helper-label">Pays</InputLabel>
+                <Select
+                label="Pays"
+                id="demo-simple-select-helper"
+                value={lieu}
+                onChange={handleChange}
+                className={classes.formControl}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Maroc</MenuItem>
+                <MenuItem value={20}>France</MenuItem>
+                <MenuItem value={30}>Algérie</MenuItem>
+              </Select>
+            </FormControl>
+
+            <TextField id="standard-search" label="Code Postal" type="text" />
+ 
+            <TextField id="standard-search" label="Adresse" type="text" />
+ 
+            <TextField id="standard-search" label="CIN" type="text" />
+ 
+            <TextField id="standard-search" label="Nationalité" type="text" />
+ 
+            <TextField id="standard-search" label="Numéro Téléphone" type="number" />
+ 
+            <TextField id="standard-search" label="Numéro Fix" type="number" />
 
               </form>
           
