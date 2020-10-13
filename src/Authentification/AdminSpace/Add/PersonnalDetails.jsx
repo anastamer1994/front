@@ -49,9 +49,9 @@ const PersonnalDetails = (props) => {
                 <FormControlLabel value="male" control={<Radio  />} label="Male" />
               </RadioGroup>
 
-              <TextField id="standard-search" label="Nom" type="text" />
+              <TextField required id="standard-search" label="Nom" type="text" />
              
-              <TextField id="standard-search" label="Prénom" type="text" />
+              <TextField  required id="standard-search" label="Prénom" type="text" />
              
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
@@ -67,7 +67,7 @@ const PersonnalDetails = (props) => {
                 />
               </MuiPickersUtilsProvider>
              
-              <FormControl className={classes.formControl}>
+              <FormControl required className={classes.formControl}>
               <InputLabel id="demo-simple-select-helper-label">Lieu de Naissance</InputLabel>   
                 <Select
                   labelId="demo-simple-select-helper-label"
@@ -85,7 +85,7 @@ const PersonnalDetails = (props) => {
                 </Select>                
               </FormControl>
               
-              <FormControl className={classes.formControl}>
+              <FormControl required className={classes.formControl}>
               <InputLabel id="demo-simple-select-helper-label">Ville</InputLabel>   
                 <Select
                   labelId="demo-simple-select-helper-label"
@@ -103,7 +103,7 @@ const PersonnalDetails = (props) => {
                 </Select>                
               </FormControl>
       
-              <FormControl className={classes.formControl}>
+              <FormControl  required className={classes.formControl}>
               <InputLabel id="demo-simple-select-helper-label">Pays</InputLabel>
                 <Select
                 label="Pays"
@@ -123,19 +123,19 @@ const PersonnalDetails = (props) => {
 
             <TextField id="standard-search" label="Code Postal" type="text" />
  
-            <TextField id="standard-search" label="Adresse" type="text" />
+            <TextField required  id="standard-search" label="Adresse" type="text" />
  
-            <TextField id="standard-search" label="CIN" type="text" />
+            <TextField required id="standard-search" label="CIN" type="text" />
  
             <TextField id="standard-search" label="Nationalité" type="text" />
  
-            <TextField id="standard-search" label="Numéro Téléphone" type="number" />
+            <TextField required id="standard-search" label="Numéro Téléphone" type="number" />
  
             <TextField id="standard-search" label="Numéro Fix" type="number" />
 
-              </form>
-          
-            <MDBBtn color="mdb-color" rounded className="float-right" onClick={props.handleNext}>next</MDBBtn>
+           
+          </form>
+          <MDBBtn color="mdb-color" rounded className="float-right" onClick={props.handleNext}>Suivant</MDBBtn>
       </>
     );
 }
