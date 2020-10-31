@@ -84,6 +84,24 @@ const PersonnalDetails = (props) => {
                   <MenuItem value={30}>El Jadida</MenuItem>
                 </Select>                
               </FormControl>
+
+              <FormControl  required className={classes.formControl}>
+              <InputLabel id="demo-simple-select-helper-label">Pays</InputLabel>
+                <Select
+                label="Pays"
+                id="demo-simple-select-helper"
+                value={lieu}
+                onChange={handleChange}
+                className={classes.formControl}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Maroc</MenuItem>
+                <MenuItem value={20}>France</MenuItem>
+                <MenuItem value={30}>Algérie</MenuItem>
+              </Select>
+            </FormControl>
               
               <FormControl required className={classes.formControl}>
               <InputLabel id="demo-simple-select-helper-label">Ville</InputLabel>   
@@ -102,24 +120,6 @@ const PersonnalDetails = (props) => {
                   <MenuItem value={30}>El Jadida</MenuItem>
                 </Select>                
               </FormControl>
-      
-              <FormControl  required className={classes.formControl}>
-              <InputLabel id="demo-simple-select-helper-label">Pays</InputLabel>
-                <Select
-                label="Pays"
-                id="demo-simple-select-helper"
-                value={lieu}
-                onChange={handleChange}
-                className={classes.formControl}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Maroc</MenuItem>
-                <MenuItem value={20}>France</MenuItem>
-                <MenuItem value={30}>Algérie</MenuItem>
-              </Select>
-            </FormControl>
 
             <TextField id="standard-search" label="Code Postal" type="text" />
  
