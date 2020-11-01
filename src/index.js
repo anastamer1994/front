@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'mdbreact/dist/css/mdb.css';
-import Provider from 'react-redux';
 import { createStore } from 'redux';
-import reducer from './store/reducer';
+import { Provider } from 'react-redux';
+import reducer from './store/reducers/reducer';
 
 const store = createStore(reducer);
 
