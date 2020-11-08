@@ -1,0 +1,3 @@
+export {
+    fetchAllAdmins,
+} from './admin'

@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/action';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialeState = {
     firstName: '',
@@ -26,7 +26,15 @@ const initialeState = {
     confirmPassword: '',
     photo: '',
     firstNameError: '',
-    lastNameError: ''
+    lastNameError: '',
+    error: false,
+    admins: {
+        id: '',
+        name: '',
+        prenom: '',
+        email: '',
+        password: ''
+    }
 };
 
 const reducer = (state = initialeState, action) => {
@@ -46,7 +54,14 @@ const reducer = (state = initialeState, action) => {
             };
         case actionTypes.ADMINS:
             return {
-                
+                ...state,
+                admins: action.data,
+                error: false
+            };
+        case actionTypes.FETCH_ADMINS_FAILED:
+            return {
+                ...state,
+                error: true
             };
         default: return state;
     }

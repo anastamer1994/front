@@ -5,9 +5,10 @@ import App from './App';
 import 'mdbreact/dist/css/mdb.css';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducers/reducer';
+import reducer from './store/reducers/admin';
+import thunk from 'redux-thunk';
 
-
+/*
 const logger = store => {
   return next => {
     return action => {
@@ -18,10 +19,11 @@ const logger = store => {
     }
   }
 }
+*/
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(logger)));
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 const app = (
   <Provider store={store} >
